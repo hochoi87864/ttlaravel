@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Product;
+use App\Models\Slide;
 use Illuminate\Http\Request;
 
 class HomeController extends FrontendController
@@ -14,6 +15,7 @@ class HomeController extends FrontendController
         parent::__construct();
     }
     public function index(){
+        $slides = Slide::all();
         $productHot = Product::where([
             'pro_hot' => Product::HOT_ON,
             'pro_active' => Product::STATUS_PUBLIC
@@ -27,7 +29,8 @@ class HomeController extends FrontendController
             'articleNews'=>$articleNews,
             'product_news' => $product_news,
             'product_best_sale' => $product_best_sale,
-            'product_best_pay' => $product_best_pay
+            'product_best_pay' => $product_best_pay,
+            'slides' =>$slides
         ];
         return view('home.index',$viewData);
     }

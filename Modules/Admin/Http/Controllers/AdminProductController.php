@@ -61,10 +61,10 @@ class AdminProductController extends Controller
             $file=$requestProduct->file('pro_avatar');
             $name=$file->getClientOriginalName();
             $Hinh = str_random('3')."_".$name;
-            while(file_exists("upload/pro_avatar/".$Hinh)){
+            while(file_exists("public/upload/pro_avatar/".$Hinh)){
                 $Hinh = str_random('3')."_".$name;
             }
-            $file->move("upload/pro_avatar",$Hinh);
+            $file->move("public/upload/pro_avatar",$Hinh);
             $product->pro_avatar = $Hinh;
         }
         else{

@@ -61,4 +61,12 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function() {
         Route::post('/update/{id}','AdminUserController@update');
         Route::get('/{action}/{id}','AdminUserController@action')->name('admin.get.acion.user');
     });
+    Route::group(['prefix'=>'slide'],function(){
+        Route::get('/','AdminSlideController@index')->name('admin.get.list.slide');
+        Route::get('/create','AdminSlideController@create')->name('admin.get.create.slide');
+        Route::post('/create','AdminSlideController@store');
+        Route::get('/update/{id}','AdminSlideController@edit')->name('admin.get.edit.slide');
+        Route::post('/update/{id}','AdminSlideController@update');
+        Route::get('/{action}/{id}','AdminSlideController@action')->name('admin.get.acion.slide');
+    });
 });

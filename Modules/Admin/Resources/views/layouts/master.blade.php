@@ -70,6 +70,19 @@
       </li>
       <!-- ------ -->
       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+          <i class="fab fa-product-hunt"></i>
+          <span>Slide</span>
+        </a>
+        <div id="collapseTen" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{Route('admin.get.list.slide')}}">Danh sách</a>
+            <a class="collapse-item" href="{{Route('admin.get.create.slide')}}">Thêm</a>
+          </div>
+        </div>
+      </li>
+      <!-- ---------- -->
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
           <i class="fab fa-product-hunt"></i>
           <span>Sản phẩm</span>

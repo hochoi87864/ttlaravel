@@ -52,10 +52,10 @@ class AdminArticleController extends Controller
             $file=$requestArticle->file('a_avatar');
             $name=$file->getClientOriginalName();
             $Hinh = str_random('3')."_".$name;
-            while(file_exists("upload/a_avatar/".$Hinh)){
+            while(file_exists("public/upload/a_avatar/".$Hinh)){
                 $Hinh = str_random('3')."_".$name;
             }
-            $file->move("upload/a_avatar",$Hinh);
+            $file->move("public/upload/a_avatar",$Hinh);
             $article->a_avatar = $Hinh;
         }
         else{
