@@ -4,7 +4,7 @@
 					<!-- logo start -->
 					<div class="col-md-3 col-sm-12 text-center nopadding-right">
 						<div class="top-logo">
-							<a href="index.html"><img src="{{asset('img/thuctap1.png')}}" alt="" /></a>
+							<a href="{{route('home')}}" ><img style="width: 50%;" src="{{asset('img/thuctap1.png')}}" alt="" /></a>
 						</div>
 					</div>
 					<!-- logo end -->
@@ -178,7 +178,7 @@
 					<!-- mainmenu area end -->
 					<!-- top details area start -->
 					<div class="col-md-3 col-sm-12 nopadding-left">
-						<div class="top-detail" style="margin-left:186px">
+						<div class="top-detail">
 							<!-- language division start -->
 							{{-- <div class="disflow">
 								<div class="expand lang-all disflow">
@@ -264,7 +264,7 @@
 							<!-- search divition end -->
 							<div class="disflow">
 								<div class="expand dropps-menu">
-									<a href="#"><i class="fa fa-align-right"></i></a>
+									<a href="#"><i class="fa fa-user"></i></a>
 									<ul class="restrain language">
 										@if(Auth::check())
 									<li><a href="{{route('get.history.customer')}}">Nhật kí mua hàng</a></li>
