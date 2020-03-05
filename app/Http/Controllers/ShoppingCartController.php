@@ -16,11 +16,20 @@ class ShoppingCartController extends FrontendController
         $number = $request->number_edit;
         $pro_id = $request->pro_id;
         $rows = \Cart::content();
+        // get number product in stock
+        $number_product_in_stock = Product::find($pro_id)->pro_number;
+        $product_in_stock_name = Product::find($pro_id)->pro_name;
+        $number_product_in_cart = $rows->where('id', $pro_id)->first()->qty;
+        // dd($number_product_in_stock, $number_product_in_cart);
+        if($number>$number_product_in_stock){
+            return redirect()->back()->with('warning','Sản phẩm '.$product_in_stock_name.' chỉ còn '.$number_product_in_stock.' trong kho');
+        }
+        // get rowID in shopping cart for update
         $rowId = $rows->where('id', $pro_id)->first()->rowId;
         // dd($test);
         // // dd($rowId,$number);
         \Cart::update($rowId, $number);
-        return redirect()->back();
+        return redirect()->back()->with('success','Cập nhật số lượng sản phẩm thành công');
 
     }
     public function addProduct(Request $request,$id){

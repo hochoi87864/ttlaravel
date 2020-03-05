@@ -458,7 +458,7 @@ ul.restrain.language li a {
 }
 
 ul.restrain.language {
-    width: 150px;
+    width: 165px;
     padding: 10px;
     background: #3f3f3f;
     top: 100%;
@@ -469,7 +469,7 @@ ul.restrain.language {
     text-transform: uppercase;
     font-size: 12px;
     padding: 32px 10px;
-    margin-left: 204px;
+    margin-left: 0px;
 }
 
 

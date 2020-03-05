@@ -173,9 +173,9 @@
 														<div class="actions">
 															<div class="action-buttons">
 																<div class="add-to-links">
-																	{{-- <div class="add-to-wishlist">
-																		<a href="#" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-																	</div> --}}
+																	<div class="add-to-wishlist">
+																		<a href="{{route('get.favorite.product',$product->id)}}" class="add_product_to_favorite_list" data-pro_id ="{{$product->id}}" data-pro_name="{{$product->pro_name}}" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+																	</div>
 																	<div class="compare-button">
 																		<a href="{{route('add.shopping.cart',$product->id)}}" data-pro_id ="{{$product->id}}" data-pro_name="{{$product->pro_name}}"  class="add_product_to_cart" title="Add to Cart"><i class="icon-bag"></i></a>
 																	</div>									
@@ -246,6 +246,33 @@
 						}
 					});
 				});		
+			});
+		</script>
+		<script>
+			$(function(){
+				$(".add_product_to_favorite_list").click(function(event){
+					event.preventDefault();
+					var pro_id = $(this).attr('data-pro_id');
+					var url1 = $(this).attr('href');
+					var name = $(this).attr('data-pro_name');
+					$.ajax({
+						method: "GET",
+						url :url1,
+						data : {id: pro_id}
+					}).done(function(result){
+						if(result.error) {
+							window.location.href = 'dang-nhap'
+						}
+						else {
+							if(result.success==1){
+								swal("Thành công !", "Bạn đã thêm "+name+" vào danh sách yêu thích của bạn !!", "success");
+							}
+							else{
+								swal("Đã tồn tại !", "Sản phẩm "+name+" đã có trong danh sách yêu thích của bạn !!", "warning");
+							}
+						}
+					});
+				});
 			});
 		</script>
 @endsection

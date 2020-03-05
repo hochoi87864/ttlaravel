@@ -83,21 +83,15 @@
 		<link rel="stylesheet" href="{{asset('css/responsive.css')}}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
         
-        <script src="{{asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
+		<script src="{{asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
+		
+		<style>
+			.sweet-alert > h2 {
+				margin-top: 30px !important	;
+			}
+		</style>
     </head>
     <body class="home-one">
-		@if(\Session::has('success'))
-			<div class="alert alert-success alert-dismissible fade in col-sm-6" style="position: fixed;z-index: 99999;top: 10%;left: 50%;transform: translate(-50%,0);">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Thành công !!! </strong>{{\Session::get('success')}}.
-		  </div>
-		@endif
-		@if(\Session::has('warning'))
-			<div class="alert alert-warning alert-dismissible fade in col-sm-6" style="position: fixed;z-index: 99999;top: 10%;left: 50%;transform: translate(-50%,0);">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Hết hàng !!! </strong>{{\Session::get('warning')}}.
-		  </div>
-		@endif
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->

@@ -31,6 +31,8 @@ Route::group(['prefix'=>'cart','middleware'=>'CheckLoginUser'],function(){
     Route::get('historycustomer/{id}','HistoryCustomerController@viewOrder')->name('history.get.view.order');
     Route::get('deletetransaction/{id}','HistoryCustomerController@deleteTransaction')->name('history.delete.transaction');
     Route::get('revecieproduct/{id}','HistoryCustomerController@revecieProduct')->name('history.revecie.product');
+    Route::get('favorite-product/{id}','HistoryCustomerController@favoriteProduct')->name('get.favorite.product');
+    Route::get('/list/favorite-product','HistoryCustomerController@listFavoriteProduct')->name('get.list.favorite.product');
 });
 Route::prefix('shopping')->group(function () {
     Route::get('/add/{id}','ShoppingCartController@addProduct')->name('add.shopping.cart');

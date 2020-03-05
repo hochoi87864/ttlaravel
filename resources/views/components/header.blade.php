@@ -177,8 +177,13 @@
 					</div>
 					<!-- mainmenu area end -->
 					<!-- top details area start -->
-					<div class="col-md-3 col-sm-12 nopadding-left">
-						<div class="top-detail">
+					<div class="col-md-3 col-sm-12 nopadding-left" style="display: flex">
+						<div style="width:62%;padding: 35px 0px;white-space: nowrap;overflow: hidden">
+							@if(Auth::check())			
+								<span class="label label-primary" style="font-size:12px"><b>Xin chào: {{Auth::user()->name}}</b></span>
+							@endif
+						</div>
+						<div class="top-detail" style="width:38%">
 							<!-- language division start -->
 							{{-- <div class="disflow">
 								<div class="expand lang-all disflow">
@@ -268,9 +273,9 @@
 									<ul class="restrain language">
 										@if(Auth::check())
 									<li><a href="{{route('get.history.customer')}}">Nhật kí mua hàng</a></li>
-										{{-- <li><a href="wishlist.html">Sản phẩm yêu thích</a></li> --}}
+									<li><a href="{{route('get.list.favorite.product')}}">Sản phẩm yêu thích</a></li>
 										<li><a href="{{route('get.list.shopping.cart')}}">Giỏ hàng</a></li>
-										<li><a href="{{route('get.logout')}}">Thoát</a></li>
+										<li><a href="{{route('get.logout')}}">Đăng xuất</a></li>
 										@else
 										<li><a href="{{route('get.register')}}">Đăng kí</a></li>
 										<li><a href="{{route('get.login')}}">Đăng nhập</a></li>

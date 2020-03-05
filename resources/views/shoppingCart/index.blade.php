@@ -30,10 +30,23 @@
 	<div class="container">
 		<div class="area-title">
 			<h2>Giỏ hàng của bạn</h2>
-		</div>
+        </div>
+        <div style="margin:0 auto">
+        @if(\Session::has('success'))
+			<div class="alert alert-success alert-dismissible fade in col-sm-6 col-sm-offset-3" >
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Thành công !!! </strong>{{\Session::get('success')}}.
+		  </div>
+		@endif
+		@if(\Session::has('warning'))
+			<div class="alert alert-warning alert-dismissible fade in col-sm-6 col-sm-offset-3">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Thất bại !!! </strong>{{\Session::get('warning')}}.
+		  </div>
+        @endif
+        </div>
         <table class="table table-hover">
             <thead class="thead-dark">
-
                     <th scope="col">STT</th>
                     <th scope="col" style="width:30%">Tên sản phẩm</th>
                     <th scope="col">Hình ảnh</th>
@@ -51,7 +64,7 @@
                     <td>{{$product->name}}</td>
                     <td><img style="width:80px;height:60px" src="{{asset('upload/pro_avatar/'.$product->options->avatar)}}"/></td>
                     <td>{{number_format($product->price,0,',','.')}}</td>
-                    <td>{{$product->qty}}</td>
+                    <td data-id="$product->qty" class="qty_product_cart">{{$product->qty}}</td>
                     <td>{{number_format($product->price * $product->qty,0,',','.')}}</td>
                     <td style="text-align:center">
                         <form action="{{route('get.edit.shopping.cart')}}" method="POST" class="form-inline">
@@ -100,7 +113,15 @@
             });
         });
     </script>
-    <script>
+    {{-- <script>
+        $(function(){
+            $(".sweet_edit").prop('disabled', true);
+            $("#number_product").change(function(event){
+                $(this).$(".sweet_edit").prop('disabled', false);
+            })
+        });
+    </script> --}}
+    {{-- <script>
         $(function(){
             $(".sweet_edit").click(function(event){
                 var number_product = $("#number_product").val();
@@ -112,5 +133,5 @@
                     swal("Lỗi!", "Bạn chỉ được mua từ 1-10 sản phẩm !!!","error")
             });
         });
-    </script>
+    </script> --}}
 @endsection

@@ -42,4 +42,7 @@ class User extends Authenticatable
     public function Transaction(){
         return $this->hasMany(Transaction::class,'tr_user_id');
     }
+    public function favoriteProduct(){
+        return $this->belongsToMany(Product::class,'favorite_product','fp_user_id','fp_product_id');
+    }
 }

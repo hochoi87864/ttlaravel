@@ -142,11 +142,11 @@
                                     </div>
                                     <div class="add-to-links">
                                         <div class="add-to-wishlist">
-                                            <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                                            <a href="{{route('get.favorite.product',$productDetail->id)}}" class="add_product_to_favorite_list" data-pro_id ="{{$productDetail->id}}" data-pro_name="{{$productDetail->pro_name}}" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
                                         </div>
-                                        <div class="compare-button">
+                                        {{-- <div class="compare-button">
                                             <a href="#" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -368,6 +368,33 @@
                     }
                 });
             });		
+        });
+    </script>
+    <script>
+        $(function(){
+            $(".add_product_to_favorite_list").click(function(event){
+                event.preventDefault();
+                var pro_id = $(this).attr('data-pro_id');
+                var url1 = $(this).attr('href');
+                var name = $(this).attr('data-pro_name');
+                $.ajax({
+                    method: "GET",
+                    url :url1,
+                    data : {id: pro_id}
+                }).done(function(result){
+                    if(result.error) {
+                        window.location.href = 'dang-nhap'
+                    }
+                    else {
+                        if(result.success==1){
+                            swal("Thành công !", "Bạn đã thêm "+name+" vào danh sách yêu thích của bạn !!", "success");
+                        }
+                        else{
+                            swal("Đã tồn tại !", "Sản phẩm "+name+" đã có trong danh sách yêu thích của bạn !!", "warning");
+                        }
+                    }
+                });
+            });
         });
     </script>
 @endsection

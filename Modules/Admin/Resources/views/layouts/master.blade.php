@@ -21,7 +21,11 @@
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
 </head>
-
+<style>
+  .sweet-alert > h2 {
+    margin-top: 30px !important	;
+  }
+</style>
 <body id="page-top">
 
   <!-- Page Wrapper -->

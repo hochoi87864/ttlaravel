@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Favorite_product;
 use App\Models\Order;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -34,5 +35,27 @@ class HistoryCustomerController extends FrontendController
         $transaction->tr_status = 2;
         $transaction->save();
         return redirect()->route('get.history.customer');
+    }
+    public function favoriteProduct(Request $request,$id){
+        if($request->ajax()){
+            foreach (Auth::user()->favoriteProduct as $product){
+                if($product->id == $id){
+                    return response()->json([
+                        'success' => 0
+                    ]);
+                }
+            }
+            $favorite = new Favorite_product();
+            $favorite->fp_product_id = $id;
+            $favorite->fp_user_id = Auth::user()->id;
+            $favorite->save();
+            return response()->json([
+                'success' => 1
+            ]);
+        }
+    }
+    public function listFavoriteProduct(){
+        $products = Auth::user()->favoriteProduct;
+        return view('favorite_product.index',compact('products'));
     }
 }
