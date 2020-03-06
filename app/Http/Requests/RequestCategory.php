@@ -25,7 +25,7 @@ class RequestCategory extends FormRequest
     {
         return [
             'name'=>'required|unique:categories,c_name,'.$this->id,
-            'icon'=>'required'
+            // 'icon'=>'required'
         ];
     }
     public function messages()
@@ -33,7 +33,7 @@ class RequestCategory extends FormRequest
         return [
             'name.required'=>'Tên danh mục không được để trống !',
             'name.unique' => 'Tên danh mục đã tồn tại',
-            'icon.required'=>'Icon không được để trống'
+            // 'icon.required'=>'Icon không được để trống'
         ];
     }
 }

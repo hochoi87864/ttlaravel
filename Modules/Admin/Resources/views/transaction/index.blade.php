@@ -50,10 +50,10 @@
                       <a href="#"><span class="badge badge-success">Đã nhận hàng</span></a>
                     @endif
                     @if($transaction->tr_status==1)
-                      <a href="#"><span class="badge badge-warning">Đã gửi hàng</span></a>
+                      <a href="{{route('admin.handle.transaction',$transaction->id)}}"><span class="badge badge-warning">Đã gửi hàng</span></a>
                     @endif
                     @if($transaction->tr_status==0)
-                      <a href="{{route('admin.handle.transaction',$transaction->id)}}"><span class="badge badge-danger">Chưa xử lý</span></a>
+                      <a href="{{route('admin.get.acion.transaction',['send',$transaction->id])}}"><span class="badge badge-danger">Chưa xử lý</span></a>
                     @endif
                 </td>
                 <td>

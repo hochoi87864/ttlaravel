@@ -46,7 +46,7 @@ class AdminCategoryController extends Controller
             }
             $category->c_name = $requestCategory->name;
             $category->c_slug = str_slug($requestCategory->name);
-            $category->c_icon = str_slug($requestCategory->icon);
+            // $category->c_icon = str_slug($requestCategory->icon);
             $category->save();
         } catch (\Exception $exception) {
             $code = 0;

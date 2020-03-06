@@ -36,7 +36,7 @@ class AdminTransactionController extends Controller
                 $product->pro_pay=  $product->pro_pay + $order->or_qty;
                 $product->save();
             }
-            $transaction->tr_status= 1;
+            $transaction->tr_status= 2;
             $transaction->save();
         }
         return redirect()->back()->with('success','Xử lý dơn hàng thành công !!!');
@@ -49,6 +49,10 @@ class AdminTransactionController extends Controller
                         $transaction->delete();
                         return redirect()->route('admin.get.list.transaction')->with('success','Đã hủy giao dịch thành công');
                     break;
+                case 'send':
+                        $transaction->tr_status= 1;
+                        $transaction->save();
+                        return redirect()->route('admin.get.list.transaction')->with('success','Đã gửi hàng thành công !');
             }
         }
     }

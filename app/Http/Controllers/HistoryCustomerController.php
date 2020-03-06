@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorite_product;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,17 @@ class HistoryCustomerController extends FrontendController
     public function revecieProduct($id){
         $transaction = Transaction::find($id);
         $transaction->tr_status = 2;
-        $transaction->save();
+        $orders = Order::where('or_transaction_id',$id)->get();
+        if($orders){
+            foreach ($orders as $order) {
+                $product = Product::find($order->or_product_id);
+                $product->pro_number =  $product->pro_number - $order->or_qty;
+                $product->pro_pay=  $product->pro_pay + $order->or_qty;
+                $product->save();
+            }
+            $transaction->tr_status= 2;
+            $transaction->save();
+        }
         return redirect()->route('get.history.customer');
     }
     public function favoriteProduct(Request $request,$id){
