@@ -2,6 +2,7 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+use App\Http\Requests\RequestSlide;
 use App\Models\Slide;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class AdminSlideController extends Controller
     public function create(){
         return view("admin::slide.create");
     }
-    public function store(Request $request){
+    public function store(RequestSlide $request){
         // dd($request->all());
         $this->insertOrUpdate($request);
         return redirect()->route('admin.get.list.slide')->with('success','Thêm Slide thành công');
@@ -29,7 +30,7 @@ class AdminSlideController extends Controller
         $slide = Slide::find($id);
         return view("admin::slide.update",compact('slide'));
     }
-    public function update(Request $request,$id){
+    public function update(RequestSlide $request,$id){
         $this->insertOrUpdate($request,$id);
         return redirect()->route('admin.get.list.slide')->with('success','Cập nhật Slide thành công');
     }
@@ -55,14 +56,15 @@ class AdminSlideController extends Controller
         }
         $slide->save();
     }
-    public function action(Request $request,$action,$id){
+    public function action($action,$id){
         if($action){
             $slide = Slide::find($id);
             switch ($action) {
                 case 'delete':
                     $slides = Slide::all()->count();
-                    if($slides<3)
+                    if($slides<3){
                     return redirect()->route('admin.get.list.slide')->with('warning','Ít nhất 2 slide hiển thị');
+                    }
                     $slide->delete();
                     return redirect()->route('admin.get.list.slide')->with('success','Xóa sản phẩm thành công');
                     break;

@@ -24,7 +24,7 @@ class RequestCategory extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:categories,c_name,'.$this->id,
+            'name'=>'required|max:255|min:16|unique:categories,c_name,'.$this->id,
             // 'icon'=>'required'
         ];
     }
@@ -33,6 +33,8 @@ class RequestCategory extends FormRequest
         return [
             'name.required'=>'Tên danh mục không được để trống !',
             'name.unique' => 'Tên danh mục đã tồn tại',
+            'name.max' => 'Tên danh mục không quá 255 kí tự',
+            'name.min' => 'Tên danh mục phải trên 16 kí tự'
             // 'icon.required'=>'Icon không được để trống'
         ];
     }

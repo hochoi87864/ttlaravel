@@ -278,7 +278,8 @@
 										<li><a href="{{route('get.logout')}}">Đăng xuất</a></li>
 										@else
 										<li><a href="{{route('get.register')}}">Đăng kí</a></li>
-										<li><a href="{{route('get.login')}}">Đăng nhập</a></li>
+										<li><a href ="#" id="modal_login" data-toggle="modal" data-target="#exampleModal1">Đăng nhập</a></li>
+										{{-- <li><a href="{{route('get.login')}}">Đăng nhập</a></li> --}}
 										@endif
 									</ul>
 								</div>
@@ -288,4 +289,35 @@
 					<!-- top details area end -->
 				</div>
 			</div>
+			{{-- modal custom login --}}
+			<div id="exampleModal123" class="modal fade">
+				<div class="modal-dialog modal-login">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="avatar" >
+								<img src="{{asset('/public/login.png')}}" alt="Avatar">
+							</div>				
+							<h4 class="modal-title">Member Login</h4>	
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">
+							<form action="#" method="post">
+								<div class="form-group">
+									<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
+								</div>        
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<a href="#">Forgot Password?</a>
+						</div>
+					</div>
+				</div>
+			</div>     
+			{{-- end modal custom login --}}
 		</header>

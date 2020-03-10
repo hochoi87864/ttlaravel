@@ -71,7 +71,7 @@
       <!-- ------ -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
-          <i class="fab fa-product-hunt"></i>
+          <i class="fas fa-images"></i>
           <span>Slide</span>
         </a>
         <div id="collapseTen" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">

@@ -2,6 +2,7 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+use App\Http\Requests\RequestUser;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class AdminUserController extends Controller
     public function create(){
         return view('admin::user.create');
     }
-    public function store(Request $request){
+    public function store(RequestUser $request){
         $this->insertOrUpdate($request);
         return redirect()->route('admin.get.list.user')->with('success',"Thêm thành viên thành công");
     }
@@ -30,11 +31,11 @@ class AdminUserController extends Controller
         $user = User::find($id);
         return view('admin::user.create',compact('user'));
     }
-    public function update(Request $request, $id){
+    public function update(RequestUser $request, $id){
         $this->insertOrUpdate($request, $id);
         return redirect()->route('admin.get.list.user')->with('success',"Cập nhật thành viên thành công");
     }
-    public function insertOrUpdate($request,$id=''){
+    public function insertOrUpdate(RequestUser $request,$id=''){
         $user = new User();
         if($id) $user = User::find($id);
         $user->name= $request->name;

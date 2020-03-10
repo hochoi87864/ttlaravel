@@ -3,8 +3,8 @@
 <div class="page-header">
     <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Trang chủ</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Tin tức</li>
-    <li class="breadcrumb-item active" aria-current="page">Cập nhật cập nhật bài viết</li>
+    <li class="breadcrumb-item active" aria-current="page">Người dùng</li>
+    <li class="breadcrumb-item active" aria-current="page">Cập nhật người dùng</li>
     </ol>
 </div>
 <div class="col-sm-10 mx-auto">

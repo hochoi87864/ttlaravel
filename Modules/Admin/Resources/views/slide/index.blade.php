@@ -23,9 +23,9 @@
         </button>
       </div>
       @endif
-      @if(\Session::has('error'))
+      @if(\Session::has('warning'))
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Thất bại! </strong> {{\Session::get('success')}}.
+        <strong>Thất bại! </strong> {{\Session::get('warning')}}.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -70,7 +70,7 @@
     });
   });
 </script>
-<script>
+{{-- <script>
   $(document).ready( function () {
     $(".sweet_delete").click(function(event){
       var url = $(this).attr('href');
@@ -95,5 +95,5 @@
       });
     });
   });
-</script>
+</script> --}}
 @endsection
