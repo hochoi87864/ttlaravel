@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RequestUser;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -30,15 +31,15 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function postRegister(Request $request){
+    public function postRegister(RequestUser $request){
         $user = new User();
-        $user->name = $request->username;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password= bcrypt($request->password);
         $user->save();
         if($user->id){
-            return redirect()->route('get.login');
+            return redirect()->route('home')->with('register_success','Đăng kí tài khoản thành công');
         }
         return redirect()->back();
     }

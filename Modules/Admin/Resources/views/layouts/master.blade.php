@@ -134,6 +134,20 @@
       </li>
       <!-- ---------- -->
       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+          <i class="fas fa-user-secret"></i>
+          <span>Báo cáo thống kê</span>
+        </a>
+        <div id="collapseEight" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{route('admin.get.statistical')}}">Danh sách</a>
+            {{-- <a class="collapse-item" href="{{route('admin.get.create.user')}}">Thêm</a> --}}
+            {{-- <a class="collapse-item" href="cards.html">Cards</a> --}}
+          </div>
+        </div>
+      </li>
+      <!-- ---------- -->
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseFive">
           <i class="fas fa-user-secret"></i>
           <span>Thành viên</span>

@@ -69,4 +69,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function() {
         Route::post('/update/{id}','AdminSlideController@update');
         Route::get('/{action}/{id}','AdminSlideController@action')->name('admin.get.acion.slide');
     });
+    Route::group(['prefix'=>'statistical'],function(){
+        Route::get('/','AdminStatisticalController@index')->name('admin.get.statistical');
+        Route::get('/list','AdminStatisticalController@getStatistical')->name('admin.get.list.statistical');
+    });
 });

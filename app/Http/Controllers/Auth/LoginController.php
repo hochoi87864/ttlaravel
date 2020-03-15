@@ -32,14 +32,36 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->route('home');
+            return response()->json([
+                'success' => 1
+            ]);
         }
         else{
-            return redirect()->back();
+            return response()->json([
+                'success' => 0
+            ]);
         }
     }
     public function getLogout(){
         Auth::logout();
         return redirect()->route('home');
     }
+
+    /**
+     * Tao 1 cái phương thức kiểm tra thông tin
+     */
+    public function checkAuth(Request $request) {
+        $credentials = $request->only(['email', 'password']);
+
+        if(\App\User::where('email', $credentials['email'])->where('password', $credentials['password'])) {
+            return response()->json([
+                'error' => false
+            ]);
+        }
+
+        return response()->json([
+            'error' => true,
+            'message' => 'Sai tài khoản hoặc mật khẩu'
+        ]);
+    } 
 }

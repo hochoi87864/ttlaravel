@@ -277,8 +277,9 @@
 										<li><a href="{{route('get.list.shopping.cart')}}">Giỏ hàng</a></li>
 										<li><a href="{{route('get.logout')}}">Đăng xuất</a></li>
 										@else
-										<li><a href="{{route('get.register')}}">Đăng kí</a></li>
-										<li><a href ="#" id="modal_login" data-toggle="modal" data-target="#exampleModal1">Đăng nhập</a></li>
+										<li><a href="#" id="modal_register">Đăng kí</a></li>
+										
+										<li><a href ="#" id="modal_login">Đăng nhập</a></li>
 										{{-- <li><a href="{{route('get.login')}}">Đăng nhập</a></li> --}}
 										@endif
 									</ul>
@@ -290,34 +291,99 @@
 				</div>
 			</div>
 			{{-- modal custom login --}}
+			@if(session()->has('register_success'))
+				<div id="check_success_register"></div>
+			@endif
 			<div id="exampleModal123" class="modal fade">
 				<div class="modal-dialog modal-login">
 					<div class="modal-content">
 						<div class="modal-header">
 							<div class="avatar" >
-								<img src="{{asset('/public/login.png')}}" alt="Avatar">
+								{{-- <img src="{{asset('/login.png')}}" alt="Avatar"> --}}
 							</div>				
-							<h4 class="modal-title">Member Login</h4>	
+							<h4 class="modal-title">Đăng nhập</h4>	
+							  	<div id="alert_login_customer" class="alert alert-warning alert-dismissible" role="alert" style="display: none">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<strong>Sai tài khoản hoặc mật khẩu !</strong> Bạn đã nhập sai tài khoản và mật khẩu xin kiểm tra lại !!!
+								  </div>
+								  @if(session()->has('register_success'))
+								  <div  class="alert alert-success alert-dismissible" role="alert">
+								  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								  <strong>Thành công!</strong> Bạn đã đăng kí tài khoản người dùng thành công xin mời đăng nhập !!!
+								  </div>
+								  @endif
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						</div>
 						<div class="modal-body">
-							<form action="#" method="post">
+							<form action="{{route('post.login')}}" method="post">
+								@csrf
 								<div class="form-group">
-									<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
+									<input type="text" class="form-control" id="email_login_customer" name="email" placeholder="Tên tài khoản..." required="required">		
 								</div>
 								<div class="form-group">
-									<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
+									<input type="password" class="form-control" id="password_login_customer" name="password" placeholder="Mật khẩu..." required="required">	
 								</div>        
 								<div class="form-group">
-									<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+									<button type="submit" id="button_login_customer" class="btn btn-primary btn-lg btn-block login-btn">Đăng nhập</button>
 								</div>
 							</form>
 						</div>
 						<div class="modal-footer">
-							<a href="#">Forgot Password?</a>
+							<a href="#">Quên mật khẩu?</a>
 						</div>
 					</div>
 				</div>
 			</div>     
 			{{-- end modal custom login --}}
+			{{--modal cusom register --}}
+			@if($errors->any())
+				<div id="check_error_register"></div>
+			@endif
+			
+		  <div class="modal fade" id="modalRegisterForm" role="dialog">
+			<div class="modal-dialog modal-sm-5">
+			  <div class="modal-content">
+				<div class="modal-header text-center">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title w-100 font-weight-bold">Đăng kí thành viên</h4>
+				</div>
+				<div class="modal-body">
+						@if ($errors->any())
+						<div class="alert alert-danger col-sm-10 col-sm-offset-1">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+						@endif
+					<form method="POST" class="col-sm-10 col-sm-offset-1" action="{{route('post.register')}}">
+						@csrf
+						<div class="form-group">
+							<label>Họ và tên của bạn: </label>
+							<input type="text" name="name" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Email</label>
+							<input type="text" name="email" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<input type="password" name="password" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Số diện thoại</label>
+							<input type="text" name="phone" class="form-control" />
+						</div>
+						<center>
+						<input type="submit" class="btn btn-primary" value="Đăng ký">&nbsp
+						<a href="#" class="btn btn-danger" id="modal_cancle_register">Hủy</a>
+						</center>
+					</form>
+					<div style="clear:both"></div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		{{-- end cusom register --}}
 		</header>

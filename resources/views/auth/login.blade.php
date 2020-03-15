@@ -23,7 +23,7 @@
 					<div class="col-md-6 col-xs-12" style="position: relative;top: 50%;left: 50%;transform: translate(-50%, 0);">
 						<div class="customer-login my-account">
 							<form method="post" class="login">
-                            @csrf
+							@csrf
 								<div class="form-fields" style="border-radius: 10px;">
 									<h2>Đăng nhập</h2>
 									<p class="form-row form-row-wide">

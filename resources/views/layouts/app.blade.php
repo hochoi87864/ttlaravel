@@ -187,5 +187,91 @@
 				});
 			});
 		</script>
+		{{-- Hiển thị sai tài khoản mật khẩu --}}
+		<script>
+			
+			$(function(){
+				
+				$("#button_login_customer").click(function(event){
+					$.ajaxSetup({
+            			headers:
+            			{ 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        			});
+					event.preventDefault();
+					var form = $(this).parents('form:first');
+					var url  = form.attr("action");
+					var email = $("#email_login_customer").val();
+					var password = $("#password_login_customer").val();
+					$.ajax({
+						type : "POST",
+						url : url,
+						data : {
+							email : email,
+							password : password
+						}
+					}).done(function(result){
+
+						if(result.success == 1){
+							$('#exampleModal123').modal('hide');
+							swal({
+								title: "Xin chào !!!",
+								text: "Chào mừng bạn đã đến với cửa hàng của chúng tôi ^^",
+								type: "success",
+								showCancelButton: false,
+								confirmButtonClass: "btn-success",
+								confirmButtonText: "OK",
+								closeOnConfirm: false
+								},
+								function(isConfirm){
+									location.reload();
+								});
+						}
+						else{
+							$("#alert_login_customer").css({"display":""});
+						}
+					});
+				});
+			});
+		</script>
+		{{-- Hiển thị sai tài khoản mật khẩu --}}
+		{{--Đăng ký--}}
+			<script>
+				$(function(){
+					if($('#check_error_register').length){
+						$("#modalRegisterForm").modal("show");
+					}
+					if($('#check_success_register').length){
+						$("#exampleModal123").modal("show");
+					}
+					$("#modal_register").click(function(event){
+						event.preventDefault();
+						$("#modalRegisterForm").modal("show");
+					});
+					$("#modal_cancle_register").click(function(event){
+						event.preventDefault();
+						swal({
+								title: "Hủy đăng kí !!!",
+								text: "Bạn muốn hủy đăng kí tài khoản này !!",
+								type: "info",
+								showCancelButton: true,
+								cancelButtonText: "Không",
+								cancelButtonClass:"btn-danger",
+								confirmButtonClass: "btn-success",
+								confirmButtonText: "OK",
+								closeOnConfirm: false
+								},
+								function(isConfirm){
+									if(isConfirm){
+										swal.close();
+										$("#modalRegisterForm").modal("hide");
+									}
+									else{
+										swal.close();
+									}
+								});
+					});
+				});
+			</script>
+		{{--End Đăng ký--}}
     </body>
 </html>
