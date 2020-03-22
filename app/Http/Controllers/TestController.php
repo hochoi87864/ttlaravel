@@ -17,4 +17,9 @@ class TestController extends Controller
         $a = User::find(1)->Transaction;
         dd($a);
     }
+    public function testmany(){
+        $product= Product::find(3);
+        $users = $product->favoriteUser;
+        dd($users);
+    }
 }

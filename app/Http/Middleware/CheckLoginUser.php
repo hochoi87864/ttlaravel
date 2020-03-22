@@ -9,7 +9,7 @@ class checkLoginUser{
                     'error' => true
                 ]);
             }
-            return redirect()->route('get.login');
+            return redirect()->back()->with('needloginForAction','needLogin');
         }
         return $next($request);
     }

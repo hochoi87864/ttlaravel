@@ -51,4 +51,7 @@ class Product extends Model
     public function Rating(){
         return $this->hasMany(Rating::class,'ra_product_id');
     }
+    public function favoriteUser(){
+        return $this->belongsToMany(User::class,'favorite_product','fp_product_id','fp_user_id');
+    }
 }

@@ -23,9 +23,9 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     
-    public function getLogin(){
-        return view('auth.login');
-    }
+    // public function getLogin(){
+    //     return redirect()->back()->with('needloginForAction','needLogin');
+    // }
     public function postLogin(Request $request)
     {
         $credentials = $request->only('email', 'password');
