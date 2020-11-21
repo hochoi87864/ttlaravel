@@ -36,7 +36,7 @@
 									</p>
 								</div>
 								<div class="form-action">
-									<p class="lost_password"> <a href="#">Lost your password?</a></p>
+									<p class="lost_password"> <a href="#">Quên mật khẩu?</a></p>
 									<div class="actions-log">
 										<input type="submit" class="btn" style="background: #3300ff;" name="login" value="Login">
 									</div>

@@ -20,6 +20,10 @@ Route::group(['namespace'=>'Auth'],function(){
     Route::get('dang-nhap','LoginController@getLogin')->name('get.login');
     Route::post('dang-nhap','LoginController@postLogin')->name('post.login');
     Route::get('dang-xuat','LoginController@getLogout')->name('get.logout');
+    Route::get('lay-lai-mat-khau','ForgotPasswordController@getFormResetPassword')->name('get.form.reset.password');
+    Route::post('lay-lai-mat-khau','ForgotPasswordController@senCodeResetPassword');
+    Route::get('password/reset','ForgotPasswordController@resetPassword')->name('get.link.reset.password');
+    Route::post('password/reset','ForgotPasswordController@saveResetPassword');
 });
 Route::get('/','HomeController@index')->name('home');
 Route::get('danh-muc/{slug}-{id}','CategoryController@getListProduct')->name('get.list.product');
@@ -33,6 +37,7 @@ Route::group(['prefix'=>'cart','middleware'=>'CheckLoginUser'],function(){
     Route::get('revecieproduct/{id}','HistoryCustomerController@revecieProduct')->name('history.revecie.product');
     Route::get('favorite-product/{id}','HistoryCustomerController@favoriteProduct')->name('get.favorite.product');
     Route::get('/list/favorite-product','HistoryCustomerController@listFavoriteProduct')->name('get.list.favorite.product');
+    Route::get('/list/favorite-product/delete/{id}','HistoryCustomerController@deleteFavoriteProduct')->name('get.delete.favorite.product');
 });
 Route::prefix('shopping')->group(function () {
     Route::get('/add/{id}','ShoppingCartController@addProduct')->name('add.shopping.cart');
@@ -51,3 +56,4 @@ Route::prefix('article')->group(function () {
 Route::get('searh','ProductDetailController@searh')->name('get.product.searh');
 Route::get('contact','HomeController@contact')->name('get.contact');
 Route::get('/.env','HomeController@index');
+Route::get('/manytomany','TestController@testmany');

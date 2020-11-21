@@ -60,6 +60,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function() {
         Route::get('/update/{id}','AdminUserController@edit')->name('admin.get.edit.user');
         Route::post('/update/{id}','AdminUserController@update');
         Route::get('/{action}/{id}','AdminUserController@action')->name('admin.get.acion.user');
+        Route::get('change/password/{id}','AdminUserController@getchangePassword')->name('admin.get.change.password');
+        Route::post('change/password/{id}','AdminUserController@changePassword')->name('admin.post.change.password');
     });
     Route::group(['prefix'=>'slide'],function(){
         Route::get('/','AdminSlideController@index')->name('admin.get.list.slide');
@@ -72,5 +74,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function() {
     Route::group(['prefix'=>'statistical'],function(){
         Route::get('/','AdminStatisticalController@index')->name('admin.get.statistical');
         Route::get('/list','AdminStatisticalController@getStatistical')->name('admin.get.list.statistical');
+    });
+    Route::group(['prefix'=>'pdf'],function(){
+        Route::get('/export-pdf','AdminPdfController@index')->name('admin.get.statistical.pdf');
     });
 });

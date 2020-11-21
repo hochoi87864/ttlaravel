@@ -41,7 +41,13 @@
             @foreach($transactions as $transaction)
               <tr>
                 <td>{{$transaction->id}}</td>
-                <td>{{$transaction->User->name}}</td>
+                <td>
+                  @if($transaction->User->name)
+                    {{$transaction->User->name}}
+                  @else
+                    Đã bị xóa
+                  @endif
+                </td>
                 <td>{{$transaction->tr_address}}</td>
                 <td>{{$transaction->tr_phone}}</td>
                 <td>{{number_format($transaction->tr_total,0,',','.')}} VND</td>

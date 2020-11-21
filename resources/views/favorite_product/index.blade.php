@@ -74,9 +74,9 @@
 																		<a href="{{route('add.shopping.cart',$product->id)}}" class="add_product_to_cart" data-pro_id ="{{$product->id}}" data-pro_name="{{$product->pro_name}}" title="Add to Cart"><i class="icon-bag"></i></a>
 																	</div>									
 																</div>
-																{{-- <div class="quickviewbtn">
-																	<a href="#" title="Add to Compare"><i class="fa fa-retweet"></i></a>
-																</div> --}}
+																<div class="quickviewbtn">
+																	<a href="{{route('get.delete.favorite.product',$product->id)}}" title="Xóa khỏi danh sách yêu thích"><i class="fa fa-trash"></i></a>
+																</div>
 															</div>
 														</div>
 														<div class="price-box">

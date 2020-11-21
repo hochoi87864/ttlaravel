@@ -69,4 +69,13 @@ class HistoryCustomerController extends FrontendController
         $products = Auth::user()->favoriteProduct;
         return view('favorite_product.index',compact('products'));
     }
+    public function deleteFavoriteProduct($id)
+    {
+        $favorite_product_delete = Favorite_product::where([
+            'fp_product_id' => $id,
+            'fp_user_id' => Auth::user()->id
+        ])->first();
+        $favorite_product_delete->delete();
+        return redirect()->back();
+    }
 }

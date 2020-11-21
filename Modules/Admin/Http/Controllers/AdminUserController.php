@@ -42,7 +42,6 @@ class AdminUserController extends Controller
         $user->email= $request->email ;
         $user->phone = $request->phone;
         $user->role = 0;
-        $user->password = bcrypt($request->password);
         $user->save();
     }
     public function action(Request $request,$action,$id){
@@ -50,12 +49,32 @@ class AdminUserController extends Controller
             $user = User::find($id);
             switch ($action) {
                 case 'delete':
-                    if($user->id==1) return redirect()->route('admin.get.list.user')->with('error',"Không được xóa Trung");
+                    if($user->id==1) return redirect()->route('admin.get.list.user')->with('error',"Không được xóa Trung vì Trung nắm quyền cao nhất");
                     $user->delete();
                     return redirect()->route('admin.get.list.user')->with('success',"Xóa thành viên thành công");
                     break;
+                case 'changerole':
+                    if($user->id==1) return redirect()->route('admin.get.list.user')->with('error',"Không được xóa Trung vì Trung nắm quyền cao nhất");
+                    $user->role= $user->role==1?0:1;
+                    $user->save();
+                break;
             }
         }
         return redirect()->back();
+    }
+    public function getchangePassword($id)
+    {
+        $user = User::find($id);
+        $data = [
+            'user' => $user
+        ];
+        return view('admin::user.changepassword',$data);
+    }
+    public function changePassword(Request $request,$id)
+    {
+        $user = User::find($id);
+        $user->password = bcrypt($request->new_password);
+        $user->save();
+        return redirect()->route('admin.get.list.user')->with("changePassword","Thay đổi mật khẩu tài khoản ".$user->email." thành công !!!");
     }
 }

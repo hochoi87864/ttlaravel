@@ -1,88 +1,6 @@
 <footer>
-			<!-- top footer area start -->
-			<div class="top-footer-area">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-3 col-sm-4">
-							<div class="single-snap-footer">
-								<div class="snap-footer-title">
-									<h4>Company info</h4>
-								</div>
-								<div class="cakewalk-footer-content">
-									<p class="footer-des">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim adm.</p>
-									<a href="#" class="read-more">Read more</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4">
-							<div class="single-snap-footer">
-								<div class="snap-footer-title">
-									<h4>Information</h4>
-								</div>
-								<div class="cakewalk-footer-content">
-									<ul>
-										<li><a href="#">About Us</a></li>
-										<li><a href="#">Careers</a></li>
-										<li><a href="#">Delivery Information</a></li>
-										<li><a href="#">Privacy Policy</a></li>
-										<li><a href="#">Terms & Condition</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-2 col-sm-4">
-							<div class="single-snap-footer">
-								<div class="snap-footer-title">
-									<h4>Fashion Tags</h4>
-								</div>
-								<div class="cakewalk-footer-content">
-									<ul>
-										<li><a href="#">My Account</a></li>
-										<li><a href="#">Login</a></li>
-										<li><a href="#">My Cart</a></li>
-										<li><a href="#">Wishlist</a></li>
-										<li><a href="#">Checkout</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-2 hidden-sm">
-							<div class="single-snap-footer">
-								<div class="snap-footer-title">
-									<h4>Fashion Tags</h4>
-								</div>
-								<div class="cakewalk-footer-content">
-									<ul>
-										<li><a href="#">Sitemap</a></li>
-										<li><a href="#">Privacy Policy</a></li>
-										<li><a href="#">Advanced Search</a></li>
-										<li><a href="#">Affiliates</a></li>
-										<li><a href="#">Contact Us</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-2 hidden-sm">
-							<div class="single-snap-footer">
-								<div class="snap-footer-title">
-									<h4>Follow Us</h4>
-								</div>
-								<div class="cakewalk-footer-content social-footer">
-									<ul>
-										<li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a><span> Facebook</span></li>
-										<li><a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus"></i></a><span> Google Plus</span></li>
-										<li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a><span> Twitter</span></li>
-										<li><a href="https://youtube.com/" target="_blank"><i class="fa fa-youtube-play"></i></a><span> Youtube</span></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>	
-			<!-- top footer area end -->
 			<!-- info footer start -->
-			<div class="info-footer">
+			<div class="info-footer" style="margin-top: -88px;">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-3 col-sm-4">
@@ -92,7 +10,7 @@
 								</div>
 								<div class="infof-content">
 									<h3>Our Address</h3>
-									<p>Main Street, Banasree, Dhaka</p>
+									<p>Tòa nhà HTC, 236B & 238 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội.</p>
 								</div>
 							</div>
 						</div>
@@ -103,7 +21,7 @@
 								</div>
 								<div class="infof-content">
 									<h3>Phone Support</h3>
-									<p>+88 0173 7803547</p>
+									<p>0942674663</p>
 								</div>
 							</div>
 						</div>
@@ -114,7 +32,7 @@
 								</div>
 								<div class="infof-content">
 									<h3>Email Support</h3>
-									<p>admin@bootexperts.com</p>
+									<p>trungle87864@gmail.com</p>
 								</div>
 							</div>
 						</div>

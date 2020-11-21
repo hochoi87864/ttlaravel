@@ -26,7 +26,15 @@
       @endif
       @if(\Session::has('error'))
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Thất bại! </strong> {{\Session::get('success')}}.
+        <strong>Thất bại! </strong> {{\Session::get('error')}}.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @endif
+      @if(\Session::has('changePassword'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Thành công! </strong> {{\Session::get('changePassword')}}.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -51,8 +59,15 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->phone}}</td>
-                <td>{{$user->role}}</td>
                 <td>
+                  @if($user->role == 1)
+                    <a href="{{route('admin.get.acion.user',['changerole',$user->id])}}"><span class="badge badge-success">Admin</span></a>
+                  @else
+                    <a href="{{route('admin.get.acion.user',['changerole',$user->id])}}"><span class="badge badge-secondary">Member</span></a>
+                  @endif
+                </td>
+                <td>
+                  <a href="{{route('admin.get.change.password',[$user->id])}}"  class="btn btn-warning btn-circle btn_change_password"><i class="fas fa-key"></i></a>
                   <a href="{{route('admin.get.edit.user',[$user->id])}}" class="btn btn-success btn-circle"><i class="fas fa-edit"></i></a> 
                   <a href="{{route('admin.get.acion.user',['delete',$user->id])}}"  class="btn btn-danger btn-circle sweet_delete"><i class="fas fa-trash-alt"></i></a>
                 </td>

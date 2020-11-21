@@ -193,8 +193,8 @@
                                             <div style="width:60%;margin:0 20px">
                                             @foreach($eachstar as $key => $value)
                                                 @if($key == $i)
-                                                    @if($productDetail->pro_total_number>0)
-                                                        <span style="width:100%;height:8px;display:block;border: 1px solid #dedede;border-radius:5px;background-color:#dedede"><b style="width:{{($key*$value/$productDetail->pro_total_number)*100}}%;background-color:#f25800;display:block;height:100%;border-radius:5px;"></b></span>
+                                                    @if($productDetail->pro_total_rating>0)
+                                                        <span style="width:100%;height:8px;display:block;border: 1px solid #dedede;border-radius:5px;background-color:#dedede"><b style="width:{{($value/$productDetail->pro_total_rating)*100}}%;background-color:#f25800;display:block;height:100%;border-radius:5px;"></b></span>
                                                     @else
                                                         <span style="width:100%;height:8px;display:block;border: 1px solid #dedede;border-radius:5px;background-color:#dedede"><b style="width:0%;background-color:#f25800;display:block;height:100%;border-radius:5px;"></b></span>
                                                     @endif
@@ -204,8 +204,8 @@
                                             <div style="width:30%">
                                                @foreach($eachstar as $key => $value)
                                                    @if($key == $i)
-                                                        @if($productDetail->pro_total_number>0)
-                                                            <a href="#">{{$value}} đánh giá({{round(($key*$value/$productDetail->pro_total_number)*100,2)}}%)</a>
+                                                        @if($productDetail->pro_total_rating>0)
+                                                            <a href="#">{{$value}} đánh giá({{round(($value/$productDetail->pro_total_rating)*100,2)}}%)</a>
                                                         @else
                                                             <a href="#">{{$value}} đánh giá</a>
                                                         @endif
@@ -219,7 +219,7 @@
                                     @if(Auth::check())
                                         <a href="#" class="btn btn-primary js_rating_action"> Gửi đánh giá của bạn </a>
                                     @else
-                                <div style="text-align: center"><b>Để đánh giá sản phẩm bạn cần</b> <a href="{{route('get.login')}}" class="btn btn-primary"> Đăng nhập </a></div>
+                                <div style="text-align: center"><b>Để đánh giá sản phẩm bạn cần</b> <button class="btn btn-primary modal_login"> Đăng nhập </button></div>
                                     @endif
                                 </div>
                                 {{-- /// --}}

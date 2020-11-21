@@ -10,10 +10,6 @@
             <input type="email" class="form-control" name="email" value="{{old('email',isset($user->email)?$user->email:'')}}"  placeholder="Email">
         </div>
         <div class="form-group">
-            <label for="name">Password:</label>
-        <input type="password" class="form-control" name="password"  placeholder="{{isset($user->password)?'Nhập mật khẩu mới':''}}">
-        </div>
-        <div class="form-group">
             <label for="name">Phone:</label>
             <input type="text" class="form-control" name="phone" value="{{old('phone',isset($user->phone)?$user->phone:'')}}"  placeholder="Phone">
         </div>

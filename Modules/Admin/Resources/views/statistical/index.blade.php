@@ -26,9 +26,11 @@
                 <label>Ngày kết thúc: &nbsp</label>
                 <input type="datetime-local" value="02/27/2020 23:59:59" name="statistical_date_end" required id="statistical_date_end" class="form-control ml-4"/>
             </div>
-            <input type="submit" value="Xuất pdf" class="btn btn-success" style=""/>
+            {{-- <input type="submit" value="Xuất pdf" class="btn btn-success" style=""/> --}}
             </form>
             <hr/>
+            <a href="#" class="btn btn-success mb-2" id="export_pdf" style="float:right;display:none">Xuất báo cáo</a>
+            <div style="clear: both"></div>
             <div id="list_render_statistical">Không có dữ liệu !!!</div>
         </div>
       </div>
@@ -66,12 +68,31 @@
             statistical_date_end   : statistical_date_end
           }
         }).done(function(result){
+
           $("#list_render_statistical").html('').append(result);
+          $("#export_pdf").css({'display':''})
+
         });              
       }
       else{
         console.log("Giá trị nhập sai kiểm tra lại");
       }
+      });
+      $("#export_pdf").click(function(event){
+        event.preventDefault();
+        var statistical_date_start_pdf = $("#data-statistical-date-start").attr('data-statistical-date-start');
+        var statistical_date_end_pdf = $("#data-statistical-date-end").attr('data-statistical-date-end');
+        var url = "{{route('admin.get.statistical.pdf')}}";
+        window.location.href = url+'?statistical_date_start_pdf='+statistical_date_start_pdf+'&&'+'statistical_date_end_pdf='+statistical_date_end_pdf;
+        // $.ajax({
+        //   type: "GET",
+        //   url : url,
+        //   data : {
+        //     statistical_date_start_pdf : statistical_date_start_pdf,
+        //     statistical_date_end_pdf : statistical_date_end_pdf
+        //   }
+        // }).done(function(result){
+        // });
       });
     });
   </script>

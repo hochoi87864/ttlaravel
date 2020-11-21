@@ -181,7 +181,7 @@
 		@yield('script')
 		<script>
 			$(function(){
-				$("#modal_login").click(function(event){
+				$(".modal_login").click(function(event){
 					event.preventDefault();
 					$("#exampleModal123").modal("show");
 				});
@@ -237,6 +237,12 @@
 		{{--Đăng ký--}}
 			<script>
 				$(function(){
+					if($('#checkResetPasswordSuccess').length){
+						swal("Reset mật khẩu thành công!", "Bạn đã lấy lại mật khẩu thành công! Mời đăng nhập", "success");
+					}
+					if($('#needloginForAction').length){
+						$("#exampleModal123").modal("show");
+					}
 					if($('#check_error_register').length){
 						$("#modalRegisterForm").modal("show");
 					}

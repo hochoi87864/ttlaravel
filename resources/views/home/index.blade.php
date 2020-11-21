@@ -2017,17 +2017,15 @@
 						url :url1,
 						data : {id: pro_id}
 					}).done(function(result){
-						if(result.error) {
-							window.location.href = 'dang-nhap'
-						}
-						else {
 							if(result.success==1){
 								swal("Thành công !", "Bạn đã thêm "+name+" vào danh sách yêu thích của bạn !!", "success");
 							}
-							else{
+							else if(result.success==0){
 								swal("Đã tồn tại !", "Sản phẩm "+name+" đã có trong danh sách yêu thích của bạn !!", "warning");
 							}
-						}
+							else{
+								alert("Cần đăng nhập cho chức năng này !!");
+							}
 					});
 				});
 			});

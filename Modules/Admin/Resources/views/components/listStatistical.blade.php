@@ -2,6 +2,8 @@
 <?php $i=1;
     $total_earn_money = 0;
  ?>
+ <div id="data-statistical-date-start" data-statistical-date-start="{{$statistical_date_start}}"></div>
+ <div id="data-statistical-date-end" data-statistical-date-end="{{$statistical_date_end}}"></div>
 <table class="table table-hover table-bordered">
     <thead class="thead-dark">
             <th scope="col">STT</th>
@@ -14,6 +16,7 @@
             <th>Mã giao dịch</th>
     </thead>
     <tbody>
+        <tr></tr>
     @foreach($transactions as $transaction )
         @foreach($transaction->Order as $order)
             <tr>

@@ -26,7 +26,6 @@ class RequestUser extends FormRequest
         return [
             'name' => 'required|max:255|min:8',
             'email' => 'required|max:255|min:8|unique:users,email',
-            'password' => 'required'
             //
         ];
     }
@@ -41,7 +40,6 @@ class RequestUser extends FormRequest
             'email.min' => 'Email ít nhất 8 kí tự',
             'email.max' => 'Email nhiều nhất 255 kí tự',
             'email.unique' => 'Đã có người đăng kí email này',
-            'password.required' => 'Mật khẩu không được để trống'
         ];
     }
 }

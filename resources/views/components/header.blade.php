@@ -1,3 +1,6 @@
+@if(session()->has('resetPasswordSuccess'))
+	<div style="display: none" id="checkResetPasswordSuccess"></div>
+@endif
 <header class="short-stor">
 			<div class="container-fluid">
 				<div class="row">
@@ -279,7 +282,7 @@
 										@else
 										<li><a href="#" id="modal_register">Đăng kí</a></li>
 										
-										<li><a href ="#" id="modal_login">Đăng nhập</a></li>
+										<li><a href ="#" class="modal_login">Đăng nhập</a></li>
 										{{-- <li><a href="{{route('get.login')}}">Đăng nhập</a></li> --}}
 										@endif
 									</ul>
@@ -293,6 +296,9 @@
 			{{-- modal custom login --}}
 			@if(session()->has('register_success'))
 				<div id="check_success_register"></div>
+			@endif
+			@if(session()->has('needloginForAction'))
+				<div id="needloginForAction"></div>
 			@endif
 			<div id="exampleModal123" class="modal fade">
 				<div class="modal-dialog modal-login">
@@ -312,6 +318,12 @@
 								  <strong>Thành công!</strong> Bạn đã đăng kí tài khoản người dùng thành công xin mời đăng nhập !!!
 								  </div>
 								  @endif
+								  @if(session()->has('needloginForAction'))
+								  <div  class="alert alert-success alert-dismissible" role="alert">
+								  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								  <strong>Chưa đăng nhập!</strong> Bạn cần đăng nhập để thực hiện chức năng này !!!
+								  </div>
+								  @endif
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						</div>
 						<div class="modal-body">
@@ -329,7 +341,7 @@
 							</form>
 						</div>
 						<div class="modal-footer">
-							<a href="#">Quên mật khẩu?</a>
+							<a href="{{route('get.form.reset.password')}}">Quên mật khẩu?</a>
 						</div>
 					</div>
 				</div>
